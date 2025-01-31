@@ -17,6 +17,27 @@ func New(r Rank, s Suit) Card {
 	}
 }
 
+// erwartet einen rank, returned true wenn
+// der rank der karte dem rank im parameter entspricht
+func (c Card) IsRank(r Rank) bool {
+
+	return c.r == r
+}
+
+// gibt den Rank der karte zurück
+func (c Card) GetRank() Rank {
+
+	return c.r
+
+}
+
+// git den Suit der karte zurück
+func (c Card) GetSuit() Suit {
+
+	return c.s
+
+}
+
 // String liefert eine AsciiArt-Repräsentation der Karte.
 // Zeichnet einen Rahmen um die Karte und innen die Zeichen für
 // Rang und Farbe.
