@@ -52,25 +52,25 @@ func (h Hand) String() string {
 			switch i {
 
 			case 0:
-				hand_string += fmt.Sprintf(card_top)
+				hand_string += card_top
 
 			case 1:
 				hand_string += fmt.Sprintf(card_upper_template, speci.GetRank())
 
 			case 2:
-				hand_string += fmt.Sprintf(card_space)
+				hand_string += card_space
 
 			case 3:
 				hand_string += fmt.Sprintf(card_middle_template, speci.GetSuit())
 
 			case 4:
-				hand_string += fmt.Sprintf(card_space)
+				hand_string += card_space
 
 			case 5:
 				hand_string += fmt.Sprintf(card_lower_template, speci.GetRank())
 
 			case 6:
-				hand_string += fmt.Sprintf(card_bottom)
+				hand_string += card_bottom
 
 			}
 
