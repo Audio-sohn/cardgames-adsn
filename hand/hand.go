@@ -2,6 +2,7 @@ package hand
 
 import (
 	"cardgames/card"
+	"fmt"
 	"slices"
 )
 
@@ -21,8 +22,70 @@ func (h *Hand) Add(c card.Card) {
 
 // String gibt eine AsciiArt-Repräsentation der Hand zurück.
 func (h Hand) String() string {
-	// TODO
-	return ""
+
+	// string to build
+
+	hand_string := ""
+
+	// strings for universal building blocks
+	card_top := "┌───────┐"
+
+	card_upper_template := "│%-2s     │"
+
+	card_middle_template := "│   %s   │"
+
+	card_lower_template := "│     %2s│"
+
+	card_space := "│       │"
+	card_bottom := "└───────┘"
+
+	// number of cards in the hand
+	// card_count := len(h.Cards)
+
+	// build Hand image line by line
+	// every card is 7 lines high
+	for i := 0; i < 7; i++ {
+
+		// iterate through each card per line
+		for j, speci := range h.Cards {
+
+			switch i {
+
+			case 0:
+				hand_string += fmt.Sprintf(card_top)
+
+			case 1:
+				hand_string += fmt.Sprintf(card_upper_template, speci.GetRank())
+
+			case 2:
+				hand_string += fmt.Sprintf(card_space)
+
+			case 3:
+				hand_string += fmt.Sprintf(card_middle_template, speci.GetSuit())
+
+			case 4:
+				hand_string += fmt.Sprintf(card_space)
+
+			case 5:
+				hand_string += fmt.Sprintf(card_lower_template, speci.GetRank())
+
+			case 6:
+				hand_string += fmt.Sprintf(card_bottom)
+
+			}
+
+			// add whitespace inbetween cards, but not at the end
+			if j < h.Len()-1 {
+				hand_string += " "
+			}
+
+		}
+
+		// add newline at the end of each line
+		hand_string += "\n"
+	}
+
+	return hand_string
 }
 
 // Remove entfernt eine Karte aus der Hand.
